@@ -1,10 +1,10 @@
 import { contextBridge, ipcRenderer } from 'electron'
 
-const api = {
-    'closeTriggers': () => ipcRenderer.invoke('close-triggers'),
-    'closeEverything': () => ipcRenderer.invoke('close-everything'),
-    'openTriggers': () => ipcRenderer.invoke('open-triggers'),
-    'shutdown': () => ipcRenderer.invoke('shutdown')
+declare global {
+   interface Window { 
+      callEvent: (event: string, params: any) => void; 
+   }
 }
 
-contextBridge.exposeInMainWorld('api', api)
+
+contextBridge.exposeInMainWorld('callEvent', (...args: any[]) => ipcRenderer.invoke('event', ...args))
