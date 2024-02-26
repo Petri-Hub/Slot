@@ -9,7 +9,7 @@ const windowController = new WindowController()
 const eventHandler = new EventHandler(windowController)
 
 /**
- * When the app
+ * When the app is ready
  */
 app.whenReady().then(() => {
 
@@ -24,7 +24,7 @@ app.whenReady().then(() => {
    //Janela principal
    const mainWindow = windowController.createWindow('main', {
       width: 300,
-      height: 300,
+      height: 350,
       resizable: false,
       maximizable: false,
       show: true,
@@ -34,7 +34,7 @@ app.whenReady().then(() => {
          preload: join(__dirname, '../preload/index.js'),
          sandbox: false
       }
-   })
+   })   
 
    //Janela de triggers
    const triggerWindow = windowController.createWindow('triggers', {
